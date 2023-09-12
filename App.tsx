@@ -7,7 +7,15 @@ import Register from "./pages/auth/register/Register";
 import Discover from "./pages/discover/Discover";
 import Payment from "./pages/payment/Payment";
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  Home: undefined;
+  Login: undefined;
+  Register: undefined;
+  Discover: undefined;
+  Payment: undefined
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (

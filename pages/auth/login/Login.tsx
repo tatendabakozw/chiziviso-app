@@ -1,15 +1,49 @@
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useState } from "react";
 import Constants from "expo-constants";
 import { StatusBar } from "expo-status-bar";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import { apiUrl } from "../../../utils/apiUrl";
+import PrimaryButton from "../../../components/buttons/PrimaryButton";
+import { getMessage } from "../../../helpers/getMessage";
+import Alert from "../../../components/alerts/Alert";
 
 type Props = {};
 
 const Login = (props: Props) => {
   const [email, setEmail] = useState("");
-  const navigation = useNavigation()
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState("");
+  const [err, setErr] = useState("");
+  const navigation = useNavigation();
+
+  const login_user = async () => {
+    setLoading(true);
+    try {
+      const { data } = await axios.post(`${apiUrl}/auth/login`, {
+        email,
+        password,
+      });
+      setMsg(getMessage(data));
+      setLoading(false);
+      setErr("");
+    } catch (error: any) {
+      setErr(getMessage(error));
+      setLoading(false);
+      setMsg("");
+    }
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -26,17 +60,22 @@ const Login = (props: Props) => {
               placeholder="Enter email/phone number"
             />
             <TextInput
-              onChangeText={setEmail}
-              value={email}
+              onChangeText={setPassword}
+              value={password}
               style={tw`border border-slate-200 rounded-lg p-4 text-lg`}
               placeholder="Password"
             />
-            <Text style={tw`pt-2 pb-8 text-right text-[#F75C03] pr-1`}>Forgot Password?</Text>
-             <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('Discover')} style={tw`bg-slate-950 p-2 rounded-full mb-8 mt-4`}>
-              <Text style={tw`text-white text-center p-2 text-lg`}>
-                Login
-              </Text>
-            </TouchableOpacity>
+            <Text style={tw`pt-2 pb-8 text-right text-[#F75C03] pr-1`}>
+              Forgot Password?
+            </Text>
+            {msg && <Alert type={'success'} message={msg} />}
+            {err && <Alert type={'error'} message={err} />}
+
+            <PrimaryButton
+              button_text="Login"
+              button_action={login_user}
+              loading={loading}
+            />
             <View style={tw`flex flex-row items-center px-4 mb-8`}>
               <View style={tw`border-b border-slate-300 flex-1`} />
               <Text style={tw`px-4 text-slate-700 font-semibold`}>Or</Text>
@@ -63,7 +102,12 @@ const Login = (props: Props) => {
               </View>
             </View>
             <View style={tw`items-center  flex-1 justify-end mb-8`}>
-              <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('Register')} style={tw`flex flex-row items-center`}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                // @ts-ignore
+                onPress={() => navigation.navigate("Register")}
+                style={tw`flex flex-row items-center`}
+              >
                 <Text style={tw`text-slate-700`}>Dont have an account?</Text>
                 <Text style={tw`text-[#F75C03] pl-1`}>Register</Text>
               </TouchableOpacity>

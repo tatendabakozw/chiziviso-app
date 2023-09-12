@@ -8,7 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 type Props = {};
 
 const Home = (props: Props) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -21,9 +21,14 @@ const Home = (props: Props) => {
             <Text style={tw`text-white text-5xl`}>Chiziviso</Text>
           </View>
           <View style={tw`h-1/2 bg-white p-4`}>
-            <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('Login')} style={tw`bg-slate-950 p-2 rounded-full mb-8 mt-4`}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              // @ts-ignore
+              onPress={() => navigation.navigate("Login")}
+              style={tw`bg-slate-950 p-2 rounded-full mb-8 mt-4`}
+            >
               <Text style={tw`text-white text-center p-2 text-lg`}>
-                Continue with phone number
+                Continue with email
               </Text>
             </TouchableOpacity>
             <View style={tw`flex flex-row items-center px-4 mb-8`}>
@@ -52,7 +57,12 @@ const Home = (props: Props) => {
               </View>
             </View>
             <View style={tw`items-center  flex-1 justify-end mb-8`}>
-              <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('Register')} style={tw`flex flex-row items-center`}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                // @ts-ignore
+                onPress={() => navigation.navigate("Register")}
+                style={tw`flex flex-row items-center`}
+              >
                 <Text style={tw`text-slate-700`}>Dont have an account?</Text>
                 <Text style={tw`text-[#F75C03] pl-1`}>Register</Text>
               </TouchableOpacity>
