@@ -1,14 +1,20 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import tw from "twrnc";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
+import * as Location from "expo-location";
+import axios from "axios";
+import { apiUrl } from "../../utils/apiUrl";
+import { getMessage } from "../../helpers/getMessage";
 
 type Props = {};
 
 const Home = (props: Props) => {
   const navigation = useNavigation();
+ 
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />

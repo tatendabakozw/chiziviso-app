@@ -13,23 +13,25 @@ import { Feather } from "@expo/vector-icons";
 
 type Props = {};
 
-const Payment = (props: Props) => {
+const Notifications = (props: Props) => {
   return (
-    <View style={[tw`bg-slate-50`, styles.container]}>
+    <View style={[tw`bg-white`, styles.container]}>
       <View style={tw`flex flex-row items-center p-4`}>
-        <View style={tw`px-4 flex-1`}>
-          <Feather name="chevron-left" size={24} color="#334155" />
-        </View>
-        <View style={tw`px-4`}>
-          <Feather name="bell" size={24} color="#334155" />
+        <View style={tw`flex flex-row items-center p-4`}>
+          <Text style={tw`text-3xl text-slate-950 font-semibold flex-1`}>
+            Notifications
+          </Text>
         </View>
       </View>
-      <ScrollView style={tw`p-4`}></ScrollView>
+      <ScrollView style={tw`p-4`}>
+      <Text style={tw`text-center text-slate-700 font-semibold`}>No new notifications</Text>
+
+      </ScrollView>
     </View>
   );
 };
 
-export default Payment;
+export default Notifications;
 
 const styles = StyleSheet.create({
   container: {

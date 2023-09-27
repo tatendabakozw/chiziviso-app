@@ -36,6 +36,10 @@ const Login = (props: Props) => {
       });
       setMsg(getMessage(data));
       setLoading(false);
+      setTimeout(() => {
+        // @ts-ignore
+        navigation.navigate("Discover")
+      }, 1500);
       setErr("");
     } catch (error: any) {
       setErr(getMessage(error));
