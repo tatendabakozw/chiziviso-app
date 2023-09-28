@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import tw from "twrnc";
 import Constants from "expo-constants";
-// import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { data } from "../../utils/data";
 import { useNavigation } from "@react-navigation/native";
@@ -50,9 +50,10 @@ const Explore = (props: Props) => {
   return (
     <View style={[tw`bg-white`, styles.container]}>
       <View style={tw`p-0`}>
-        {/* <MapView
+        <MapView
           style={styles.map}
           initialRegion={position}
+          
           showsUserLocation={true}
           showsMyLocationButton={true}
           followsUserLocation={true}
@@ -83,7 +84,7 @@ const Explore = (props: Props) => {
               }}
             />
           ))}
-        </MapView> */}
+        </MapView>
       </View>
     </View>
   );

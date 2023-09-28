@@ -13,7 +13,7 @@ import tw from "twrnc";
 import Constants from "expo-constants";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
 
 type Props = {
   route: any;
@@ -103,7 +103,7 @@ const Description = ({ route }: Props) => {
               longitudeDelta: 0.03,
             }}
             showsUserLocation={true}
-            provider={PROVIDER_GOOGLE}
+            provider={PROVIDER_DEFAULT}
             showsMyLocationButton={true}
             followsUserLocation={true}
             showsCompass={true}

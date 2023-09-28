@@ -102,7 +102,7 @@ const Discover = (props: Props) => {
     <View style={[tw`bg-white pb-24`, styles.container]}>
       <View style={tw`flex flex-row items-center p-4`}>
         <Text style={tw`text-3xl text-slate-950 font-semibold flex-1`}>
-          Good afternoon
+          Good afternoo
         </Text>
       </View>
       <ScrollView style={tw`p-4`}>
