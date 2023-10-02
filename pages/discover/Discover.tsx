@@ -36,10 +36,10 @@ const Discover = (props: Props) => {
     { name: "Attractions" },
     { name: "Amenities" },
     { name: "Accommodation" },
-    { name: "Auto Parts" },
-    { name: "Liqour" },
-    { name: "Clothing" },
-    { name: "Restaurants" },
+    { name: "Activities" },
+    // { name: "Liqour" },
+    // { name: "Clothing" },
+    // { name: "Restaurants" },
   ];
 
   const [query, setQuery] = useState("");
@@ -102,7 +102,7 @@ const Discover = (props: Props) => {
     <View style={[tw`bg-white pb-24`, styles.container]}>
       <View style={tw`flex flex-row items-center p-4`}>
         <Text style={tw`text-3xl text-slate-950 font-semibold flex-1`}>
-          Good afternoo
+          Good afternoon
         </Text>
       </View>
       <ScrollView style={tw`p-4`}>
@@ -146,9 +146,14 @@ const Discover = (props: Props) => {
         </ScrollView>
         {searchedItem?.length >= 1 ? (
           <>
-            <Text style={tw`mt-8 text-slate-950 text-3xl font-semibold`}>
-              Searched Results
-            </Text>
+            <View style={tw`flex flex-row items-center justify-between`}>
+              <Text style={tw`mt-8 text-slate-950 text-3xl font-semibold`}>
+                Searched Results
+              </Text>
+              <TouchableOpacity onPress={() => setSearchedItem("")}>
+                <Text>Clear</Text>
+              </TouchableOpacity>
+            </View>
             <Text style={tw`text-slate-400 text-lg pb-9`}>
               This is what you searched for
             </Text>
@@ -208,14 +213,14 @@ const Discover = (props: Props) => {
             </View>
             <View style={tw`flex flex-row pt-2`}>
               <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={() =>
-                setSearchedItem(
-                  data.locations.filter((obj) =>
-                    JSON.stringify(obj).toLowerCase().includes("fun")
+                activeOpacity={0.7}
+                onPress={() =>
+                  setSearchedItem(
+                    data.locations.filter((obj) =>
+                      JSON.stringify(obj).toLowerCase().includes("activities")
+                    )
                   )
-                )
-              }
+                }
                 style={tw`flex-1 flex flex-row h-16 rounded overflow-hidden mr-1`}
               >
                 <View
@@ -229,11 +234,19 @@ const Discover = (props: Props) => {
                 </View>
                 <View style={tw`bg-[#ffedd5] w-2/3 justify-center`}>
                   <Text style={tw`pl-4 text-xl font-semibold text-slate-700`}>
-                    Fun
+                    Activities
                   </Text>
                 </View>
               </TouchableOpacity>
-              <View
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() =>
+                  setSearchedItem(
+                    data.locations.filter((obj) =>
+                      JSON.stringify(obj).toLowerCase().includes("accessibility")
+                    )
+                  )
+                }
                 style={tw`flex-1 flex flex-row h-16 rounded overflow-hidden ml-1`}
               >
                 <View
@@ -246,7 +259,7 @@ const Discover = (props: Props) => {
                     Accessibility
                   </Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             </View>
           </>
         )}

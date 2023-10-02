@@ -94,7 +94,7 @@ const Description = ({ route }: Props) => {
           </View>
         </View>
         <View style={tw`bg-white h-80 w-full rounded-lg overflow-hidden mb-16`}>
-          {/* <MapView
+          <MapView
             style={styles.map}
             initialRegion={{
               latitude: params.location.lat,
@@ -120,7 +120,7 @@ const Description = ({ route }: Props) => {
                 longitude: params.location.lon,
               }}
             />
-          </MapView> */}
+          </MapView>
         </View>
       </ScrollView>
     </View>
